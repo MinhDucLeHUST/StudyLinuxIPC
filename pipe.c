@@ -42,7 +42,7 @@ int main(int argc, char const* argv[]) {
             if (numberRead == -1) {
                 printf("Can't read data in Pipe!\n");
                 exit(EXIT_FAILURE);
-            } else if (numberRead == 0) {
+            } else if (numberRead == 0) {  // khi đầu write bị đóng
                 printf("End end-of-pipe!\n");
             } else {
                 printf("Message: %s", pipeBuffer);
@@ -55,6 +55,11 @@ int main(int argc, char const* argv[]) {
         write(fds[1], msg1, MSG_SIZE);
         write(fds[1], msg2, MSG_SIZE);
         write(fds[1], msg3, MSG_SIZE);
+        // if (close(fds[1]) == -1)
+        //     printf("Close write function was error!\n");
+        while (1)
+            ;
+        printf("Quit parent process!\n");
     }
 
     // callSignalToWriteData();
