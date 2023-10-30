@@ -1,0 +1,2 @@
+void helloTrungQuoc();
+void helloVietnam();

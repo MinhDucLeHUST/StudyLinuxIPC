@@ -1,0 +1,28 @@
+*Socket là 1 cơ chế IPC, là 1 truyền thông cho phép các process giao tiếp với nhau treen cùng 1 thiết bị hoặc không
+*Socket gồm 3 thành phần chính: domain, type, protocol
+(1) Domain - tên miền:
+khi truy cập đến 1 domain cần quan tâm đến IP và Port
+	Internet: IPv4 & IPv6 (ít làm việc với IPv6)
+	Unix: (AF_UNIX) vừa giao tiếp đc trên cùng 1 máy hoặc 2 máy khác nhau
+		nhanh hơn Domain Internet, vì nó chỉ cần tạo ra 1 đường dẫn mà không cần khởi tạo IP, port 
+
+(2): cơ chế truyền nhận thông tin, có 2 loại chính
+stream và datagram
+stream dựa trên giao thức TCP, dữ liệu sử dụng là các chuỗi bit
+datagram dựa trên giao thức UDP => nhanh hơn TCP vì không cần tạo kết nối trước khi trao đổi dữ liệu, dữ liệu được gửi theo các gói
+
+(3): Protocol => cách thức đóng gói dữ liệu
+Khi đã xác định dduowjc domain và type thì thường sẽ có 1 protocol xác định => set proctocol's value = 0
+=> có 4 loại socket phổ biến
+	Ipv4 Stream
+	Unix Stream
+	Ipv4 Datagram
+	Unix Datagram 
+Tham khảo thêm tại: https://man7.org/linux/man-pages/man2/socket.2.html
+
+khởi tạo socket: socket(domain,type,protocol)
+*Luồng hoạt động của Stream Socket:
+
+listen() => thiết lập số client muốn kết nối đến server
+accept() => cho phép truy cập từ client tới ?
+	block cho tới khi có 1 client connect tới 

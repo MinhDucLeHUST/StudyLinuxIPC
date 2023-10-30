@@ -1,0 +1,7 @@
+*Pipes
+Nằm trong RAM => "virtual file": mất đi khi tbi mất nguồn
+Khi pipe rỗng thì đầu "read" sẽ block cho đến khi có dữ liệu được truyền vào từ đầu "write" thì sẽ unblock
+Nếu đầu write bị close => đọc toàn bộ còn lại trong pipe => return (kthuc chtrinh) => không bị block ở đầu read nữa
+Tạo pipe trước khi fork() thì các thế hệ process có thể giao tiếp với nhau qua pipe
+>> Dead lock: quên ko đóng đầu read của writter or write của reader => read (bên phía reader) ko bao giờ "end of pipe", tức là nó hiểu sẽ có dữ liệu được ghi vào tiếp nên không end
+Giao tiếp 1 chiều

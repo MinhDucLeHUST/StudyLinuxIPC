@@ -1,0 +1,5 @@
+*FIFOs - named Pipes: là 1 khái niệm mở rộng của Pipes
+	Pipes được định danh => gọi là FIFOs, không bị mất file khi thiết bị mất điện
+	hoạt động giống Pipes
+	được tạo ra với systemcall mkfifo()
+	
